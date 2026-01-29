@@ -1,7 +1,7 @@
 
 body    {
-    font-family: Arial, sans-serif;
-    color: var(--ink);
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
     padding: 18px;
     margin: 0;
     background: #6b4428
@@ -21,9 +21,10 @@ background: #d97706;
 color: #fff;
 font-size: 2.2rem;
 font-weight: bold;
+letter-spacing: 2px;
 text-transform: uppercase;
 border: 3px solid #92400e;
-border-radius: 8px;
+border-radius: 6px;
 box-shadow: 0 4px 6px #92400e;}
 
 header p {
@@ -34,28 +35,25 @@ font-weight: bold;}
 .card {
 max-width: 900px;
 margin: 0 auto;
+background: #fffdf7;
 padding: 12px ;
-background: #f3f4f6;
 border: 1px solid #d6d1c4;
-border-radius: 8px;
-box-shadow: 0 4px 6px #9ca3af}
+border-radius: 8px;}
+
+.card p {
+margin: 6px 0;
+}
 
 .message {
-max-width: 900px;
-margin: 16px auto;
-padding: 12px ;
-background: #d1fae5;
-border: 1px solid #10b981;
-border-radius: 8px;
-box-shadow: 0 4px 6px #6ee7b7;
-color: #065f46;
+margin: 6px 0 10px;
+color: #92400e;
 font-weight: bold;
-text-align: center;
+min-height: 1.1rem;
 }   
 
 fieldset {
     margin: 6px 0;
-    padding: 8px 10px;
+    padding: 8px 10px 10px;
     border: 1px solid #d6d1c4;
     border-radius: 6px;
     background: #fff;
@@ -63,15 +61,18 @@ fieldset {
 
 legend {
     font-weight: bold;
+  border-radius: 4px;
+  font-size: 0.95rem;
   padding: 0 6px;
-  font-size: 0.9rem;
+ 
 }
+
 
 label {
 display: flex;
 align-items: center;
 gap: 8px;
-margin: 4px 0;
+margin: 2px 0;
 cursor: pointer;
 }
 
