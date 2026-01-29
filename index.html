@@ -4,16 +4,161 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Photo Consent App</title>
+  <title>Interactive Quiz</title>
   <meta name="description" content="Simple interactive quiz to test your general knowledge">
   <meta name="keywords" content="Quiz, interactive, general knowledge, questions, answers">
-  <link rel="icon" type="image/jpeg" href="Assets/Images/PhotoApp.jpg">
+  <link rel="icon" type="image/jpeg" href="Assets/Images/Quiz.jpg">
   <link rel="apple-touch-icon" href="Assets/Images/Quiz.jpg">
   <link href="Assets/CSS/style.css" rel="stylesheet">   
-</head>    
+</head> 
+<header>
+     <h1>Welcome to the Interactive Quiz</h1>        
+    <p>Answer all 10 questions and submit.</p>    
+</header>
 <body>        
-    <h1>Welcome to the Sample Page</h1>        
-    <p>This is a simple HTML page to demonstrate structure and styling.</p>        
-    <button class="btn-primary">Click Me!</button>    
+   <main class="card">       
+<p><strong>Answered:</strong> 0/10</p>
+    <p class="message">Message to appear here</p>
+<form>
+<!-----Questions -->
+<!-----Question 1 -->
+<fieldset>
+    <legend>1. What is the capital of France?</legend>
+    <input type="radio" id="q1a1" name="q1" value="Berlin">
+    <label for="q1a1">Berlin</label><br>
+    <input type="radio" id="q1a2" name="q1" value="Madrid">
+    <label for="q1a2">Madrid</label><br>
+    <input type="radio" id="q1a3" name="q1" value="Paris">
+    <label for="q1a3">Paris</label><br>
+    <input type="radio" id="q1a4" name="q1" value="Rome">
+    <label for="q1a4">Rome</label><br>
+</fieldset>
+
+<!-----Question 2 -->
+<fieldset>
+    <legend>2. Which planet is known as the Red Planet?</legend>
+    <input type="radio" id="q2a1" name="q2" value="Earth">
+    <label for="q2a1">Earth</label><br>
+    <input type="radio" id="q2a2" name="q2" value="Mars">
+    <label for="q2a2">Mars</label><br>
+    <input type="radio" id="q2a3" name="q2" value="Jupiter">
+    <label for="q2a3">Jupiter</label><br>
+    <input type="radio" id="q2a4" name="q2" value="Venus">
+    <label for="q2a4">Venus</label><br>
+</fieldset>
+<!-----Question 3 -->
+<fieldset>
+    <legend>3. Who wrote 'Romeo and Juliet'?</legend>
+    <input type="radio" id="q3a1" name="q3" value="Charles Dickens">
+    <label for="q3a1">Charles Dickens</label><br>
+    <input type="radio" id="q3a2" name="q3" value="William Shakespeare">
+    <label for="q3a2">William Shakespeare</label><br>
+    <input type="radio" id="q3a3" name="q3" value="Mark Twain">
+    <label for="q3a3">Mark Twain</label><br>
+    <input type="radio" id="q3a4" name="q3" value="Jane Austen">
+    <label for="q3a4">Jane Austen</label><br>
+</fieldset>     
+<!-----Question 4 -->
+<fieldset>
+    <legend>4. What is the largest ocean on Earth?</legend>
+    <input type="radio" id="q4a1" name="q4" value="Atlantic Ocean">
+    <label for="q4a1">Atlantic Ocean</label><br>
+    <input type="radio" id="q4a2" name="q4" value="Indian Ocean">
+    <label for="q4a2">Indian Ocean</label><br>
+    <input type="radio" id="q4a3" name="q       4" value="Arctic Ocean">
+    <label for="q4a3">Arctic Ocean</label><br>
+    <input type="radio" id="q4a4" name="q4" value="Pacific Ocean">
+    <label for="q4a4">Pacific Ocean</label>                     
+</fieldset>
+<!-----Question 5 -->
+<fieldset>
+    <legend>5. What is the chemical symbol for gold?</legend>
+    <input type="radio" id="q5a1" name="q5" value="Ag">
+    <label for="q5a1">Ag</label><br>
+    <input type="radio" id="q5a2" name="q5" value="Au">
+    <label for="q5a2">Au</label><br>
+    <input type="radio" id="q5a3" name="q5" value="Gd">
+    <label for="q5a3">Gd</label><br>
+    <input type="radio" id="q5a4" name="q5" value="Pb">
+    <label for="q5a4">Pb</label><br>
+</fieldset>
+<!-----Question 6 -->
+<fieldset>
+    <legend>6. Who painted the Mona Lisa?</legend>
+    <input type="radio" id="q6a1" name="q6" value="Vincent van Gogh">
+    <label for="q6a1">Vincent van Gogh</label><br>
+    <input type="radio" id="q6a2" name="q6" value="Pablo Picasso">
+    <label for="q6a2    ">Pablo Picasso</label><br>
+    <input type="radio" id="q6a3" name="q6" value="Leonardo da Vinci">
+    <label for="q6a3">Leonardo da       Vinci</label><br>               
+    <input type="radio" id="q6a4" name="q6" value="Claude Monet">
+    <label for="q6a4">Claude Monet</label><br>
+</fieldset>
+<!-----Question 7 -->
+<fieldset>
+    <legend>7. What is the smallest prime number?</legend>          
+    <input type="radio" id="q7a1" name="q7" value="0">
+    <label for="q7a1">0</label><br>                 
+
+
+    <input type="radio" id="q7a2" name="q7" value="1">
+    <label for="q7a2">1</label><br>
+    <input type="radio" id="q7a3" name="q7" value="2">
+    <label for="q7a3">2</label><br>
+    <input type="radio" id="q7a4" name="q7" value="3">
+    <label for="q7a4">3</label><br>
+</fieldset>
+<!-----Question 8 -->
+<fieldset>
+    <legend>8. In which year did the Titanic sink?</legend>                     
+    <input type="radio" id="q8a1" name="q8" value="1912">
+    <label for="q8a1">1912</label><br>              
+    <input type="radio" id="q8a2" name="q8" value="1905">
+    <label for="q8a2">1905</label><br>                  
+    <input type="radio" id="q8a3" name="q8" value="1915">       
+    <label for="q8a3">1915</label><br>              
+    <input type="radio" id="q8a4" name="q8" value="1920">
+    <label for="q8a4">1920</label><br>              
+</fieldset>
+<!-----Question 9 -->
+<fieldset>
+    <legend>9. What is the hardest natural substance on Earth?</legend>
+    <input type="radio" id="q9a1" name="q9" value="Gold">
+    <label for="q9a1">Gold</label><br>
+    <input type="radio" id="q9a2" name="q9"             value="Iron">
+    <label for="q9a2">Iron</label><br>
+    <input type="radio" id="q9a3" name="q9" value="Diamond">
+    <label for="q9a3">Diamond</label><br>
+    <input type="radio" id="q9a4" name="q9" value="Silver">
+    <label for="q9a4">Silver</label><br>                            
+</fieldset>
+<!-----Question 10 -->
+<fieldset>      
+    <legend>10. Who is known as the 'Father of Computers'?</legend>
+    <input type="radio" id="q10a1" name="q10" value="Alan Turing">
+    <label for="q10a1">Alan Turing</label><br>
+    <input type="radio" id="q10a2" name="q10" value="Charles Babbage">
+    <label for="q10a2">Charles Babbage</label><br>
+    <input type="radio" id="q10a3" name="q10" value="Bill Gates">
+    <label for="q10a3">Bill Gates</label><br>
+    <input type="radio" id="q10a4" name="q10" value="Steve Jobs">
+    <label for="q10a4">Steve Jobs</label><br>
+</fieldset>
+
+
+</form>
+<button type="submit">Submit Answers</button>   
+<button type="reset">Reset Quiz</button>    
+
+
+
+
+
+
+</main>
+
+
+
+
 </body>
 </html>
