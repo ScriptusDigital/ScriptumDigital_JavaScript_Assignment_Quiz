@@ -56,12 +56,11 @@ function updateAnsweredCount() {
 }
 
 //Validation for all answered//
-function valdidateAllAnswered() {
+function validateAllAnswered() {
     for (let i = 1; i <= TOTAL; i++) 
         if (!document.querySelector(`input[name="q${i}"]:checked`)) {
             return i;
         }
-
     return null;
 }
 
@@ -84,7 +83,7 @@ quizForm.addEventListener("change", updateAnsweredCount);
 quizForm.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const missing = valdidateAllAnswered();
+    const missing = validateAllAnswered();
     if (missing) {
         showMessage(`Please answer question ${missing} before submitting.`);
         result.textContent = "";

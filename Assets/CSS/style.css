@@ -12,120 +12,57 @@ body    {
 header, .card {
 max-width: 900px;
 margin: 0 auto 16px;
-text-align: center;
 margin-right: auto;
 }
 
+header {
+text-align: center;
+margin-bottom: 18px; }
+
 header h1 {
-display: inline-block ;
-margin: 0  ;
-padding: 14px 22px;
-background: #d97706;
-color: #fff;
-font-size: 2.2rem;
-font-weight: bold;
-letter-spacing: 2px;
-text-transform: uppercase;
-border: 3px solid #92400e;
-border-radius: 6px;
-box-shadow: 0 4px 6px #92400e;}
+margin: 0;
+font-size: 2rem;
+font-weight: 800;
+letter-spacing: 0.4px;
+color: #e2e8f0;
+}
 
 header p {
 margin: 8px 0 0 ;
-color: #fff;
-font-weight: bold;}
+color: #94a3b8;
+font-weight: 600;}
+
+
+/* Quiz Card */
+
 
 .card {
-max-width: 900px;
-margin: 0 auto;
-background: #fffdf7;
-padding: 12px ;
-border: 1px solid #d6d1c4;
-border-radius: 8px;}
+background: #ffffff;
+padding: 16px ;
+border: 1px solid #e2e8f0;
+border-radius: 14px;}
 
 .card p {
 margin: 6px 0;
 }
 
-.message {
-margin: 6px 0 10px;
-color: #92400e;
-font-weight: bold;
-display: none;
-}   
+/* Sticky Top Section */
 
-fieldset {
-    margin: 6px 0;
-    padding: 8px 10px 10px;
-    border: 1px solid #d6d1c4;
-    border-radius: 6px;
-    background: #fff;
-}
-
-legend {
-    font-weight: bold;
-  border-radius: 4px;
-  font-size: 0.95rem;
-  padding: 0 6px;
- 
-}
-
-
-label {
-display: flex;
-align-items: center;
-gap: 8px;
-margin: 2px 0;
-cursor: pointer;
-}
-
-label input[type="radio"] {
-    margin: 0;
-}   
-button {
-margin-top: 10px;
-margin-right: 8px;
-padding: 8px 14px;
-border: 1px solid #c9c1b1;
-border-radius: 6px;
-background: #e5e7eb;
-color: #111827;
-font-weight: bold;
-cursor: pointer;
-}
-
-button:hover {
-    background: #d1d5db;
-}
-
-button[type="submit"] {
-    background: #fde68a;
-    border: 1px solid #f59e0b;
-}
-
-.result {
-margin-top: 14px;}
-
-@media (max-width: 520px) {     
-    body {
-        padding: 12px;
-    }
-    
-    header h1 {
-        font-size: 1.8rem;
-        padding: 10px 16px;
-    }
-.card {
-    padding: 12px;
-}
+.stickyTop {
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    z-index: 10;
+    padding-top: 12px;
+    border-bottom: 2px solid #e3e8f0;
 }
 
 /* Progress Bar  */
 .progressWrap {
     height: 20px;
-    background: rgba(255,255,255,0.1);
+    background: #eef2ff;
     border-radius: 999px;
-    border: #111827 solid 1px;
+    border: #c7d2fe solid 1px;
     overflow: hidden;
     margin-bottom: 12px;
     width: 100% ;
@@ -134,14 +71,116 @@ margin-top: 14px;}
 .progressBar {
     height: 100%;
     width: 0%;
-    background: #f59e0b;
+    background: #2563eb;
     transition: width 0.3s ease-in-out;
 }
 
-.stickyTop {
-    position: sticky;
-    top: 0;
-    background: #fffdf7;
-    padding-top: 12px;
-    border-bottom: 2px solid #fffdf7;;
+
+
+.message {
+margin: 6px 0 10px;
+padding: 10px 10px ;
+border-radius: 10px;
+color: #9a3412;
+font-weight: 700;
+display: none;
+background: #fff7ed;
+}   
+
+
+/*  Questions  */
+
+fieldset {
+    margin: 10px 0;
+    padding: 8px 10px 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #ffffff;
 }
+
+legend {
+    font-weight: 800;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  padding: 0 6px;
+  color: #0f172a;
+ 
+}
+
+/*  Answer Options   */
+
+label {
+display: flex;
+align-items: center;
+gap: 8px;
+margin: 2px 0;
+cursor: pointer;
+color: #0f172a;
+}
+
+label input[type="radio"] {
+    margin: 0;
+}   
+
+
+/*  Buttons   */
+button {
+margin-top: 10px;
+margin-right: 8px;
+padding: 8px 14px;
+border: 1px solid #e2e8f0;
+border-radius: 12px;
+background: #f8fafc;
+color: #0f172a;
+font-weight: 800;
+cursor: pointer;
+}
+
+button:hover {
+    background: #f1f5f9;
+}
+
+button[type="submit"] {
+    background: #2563eb;
+    border: 1px solid #1d4ed8;
+    color: #ffffff;
+}
+
+button[type="submit"]:hover {
+    background: #1d4ed8;
+}
+
+/*  Results   */
+
+.result {
+margin-top: 14px;
+padding-top: 12px;
+border-top: 1px solid #e2e8f0;  
+font-weight: 800;
+color: #334155;
+}
+
+
+/*  Browser options   */
+
+button:focus,
+input[type="radio"]:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+@media (max-width: 520px) {     
+    body {
+        padding: 12px;
+    }
+    
+    header h1 {
+        font-size: 1.6rem;
+        padding: 10px 16px;
+    }
+.card {
+    padding: 12px;
+
+}
+}
+
