@@ -37,4 +37,28 @@ function valdidateAllAnswered() {
 quizForm.addEventListener("change", updateAnsweredCount);
 updateAnsweredCount();
 
+//Submit actions and block reload//
+quizForm.addEventListener("submit", function(event) {
+    event.preventDefault();
 
+    const missing = valdidateAllAnswered();
+    if (missing) {
+        message.textContent = `Please answer question ${missing} before submitting.`;
+        result.textContent = "";
+        return;
+    }
+
+    message.textContent = "Thank you for completing the quiz!";
+    result.textContent = "";
+});
+
+
+//Form reset//
+resetBtn.addEventListener("click", function() {
+    quizForm.reset();
+    message.textContent = "";
+    result.textContent = "";
+    updateAnsweredCount();
+}); 
+
+updateAnsweredCount();
