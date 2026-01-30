@@ -200,6 +200,23 @@ button[type="submit"]:hover {
     background: #0000008c
 }
 
+/*  FOOTER   */
+
+.site-footer {
+    margin-top: 0px;
+    font-size: 0.9rem;
+   color: #ffffff;
+    text-align: center;
+}
+
+.site-footer a {
+    color: #ffffff;
+    text-decoration: none;
+}   
+.site-footer a:hover {
+    text-decoration: underline;
+}   
+
 /*  Browser options   */
 
 button:focus,
@@ -222,4 +239,3 @@ input[type="radio"]:focus {
 
 }
 }
-

@@ -131,6 +131,7 @@ function resetUI() {
         progressBar.style.width = "0%";
 
         updateAnsweredCount();  
+        window.scrollTo({top: 0, behavior: "smooth"});
     }
 
 //EVENTS//
