@@ -1,10 +1,17 @@
 /* jshint esversion: 6 */
 
 
-//Answer counter//
-const quizForm = document.querySelector("form");
+//Action elements//
+const quizForm = document.getElementById("quizForm");
+const resetBtn = document.getElementById("resetBtn");
+const message = document.getElementById("message");
+const result = document.getElementById("result");
 const answeredCount = document.getElementById("answeredCount");
 const TOTAL = 10;
+
+
+//Answered count update//
+
 
 function updateAnsweredCount() {
     let answered = 0;
@@ -21,13 +28,3 @@ quizForm.addEventListener("change", updateAnsweredCount);
 updateAnsweredCount();
 
 
-//Submit and validation//
-
-const quizForm = document.getElementById("quizForm");
-const resetBtn = document.getElementById("resetBtn");
-const message = document.getElementById("message");
-const result = document.getElementById("result");
-const answeredCount = document.getElementById("answeredCount");
-const TOTAL = 10;
-
-quizForm.addEventListener("submit", function(event) {
