@@ -58,7 +58,6 @@ function calculateScore() {
 
 //Listener and count//
 quizForm.addEventListener("change", updateAnsweredCount);
-updateAnsweredCount();
 
 //Submit actions and block reload//
 quizForm.addEventListener("submit", function(event) {
@@ -71,8 +70,9 @@ quizForm.addEventListener("submit", function(event) {
         return;
     }
 
+    const score = calculateScore();
     message.textContent = "Thank you for completing the quiz!";
-    result.textContent = "";
+    result.textContent = `Your score is ${score} out of ${TOTAL}.`;
 });
 
 
@@ -86,5 +86,11 @@ resetBtn.addEventListener("click", function() {
 
 updateAnsweredCount();
 
+//Progress graphic//
 
-
+const progressBar = document.getElementById("progressBar");
+quizForm.addEventListener("change", function() {
+    const answered = parseInt(answeredCount.textContent);
+    const progressPercent = (answered / TOTAL) * 100;
+    progressBar.style.width = progressPercent + "%";
+}); 
