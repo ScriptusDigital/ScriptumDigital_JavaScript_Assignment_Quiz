@@ -19,3 +19,15 @@ function updateAnsweredCount() {
 //Listener and count//
 quizForm.addEventListener("change", updateAnsweredCount);
 updateAnsweredCount();
+
+
+//Submit and validation//
+
+const quizForm = document.getElementById("quizForm");
+const resetBtn = document.getElementById("resetBtn");
+const message = document.getElementById("message");
+const result = document.getElementById("result");
+const answeredCount = document.getElementById("answeredCount");
+const TOTAL = 10;
+
+quizForm.addEventListener("submit", function(event) {
