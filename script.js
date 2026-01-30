@@ -7,6 +7,7 @@ const resetBtn = document.getElementById("resetBtn");
 const message = document.getElementById("message");
 const result = document.getElementById("result");
 const answeredCount = document.getElementById("answeredCount");
+const progressBar = document.getElementById("progressBar");
 const TOTAL = 10;
 
 //Correct Answers//
@@ -23,6 +24,22 @@ const answers = {
     q10: "B"
 };
 
+//Show message on bar//
+function showMessage(text) {
+    message.textContent = text;
+    message.style.display = text ? "block" : "none";
+}   
+
+
+//Progress bar//
+
+function updateProgressBar() {
+    const answered = parseInt(answeredCount.textContent, 10);
+    const progressPercent = (answered / TOTAL) * 100;
+    progressBar.style.width = progressPercent + "%";
+}
+
+
 //Answered count update//
 
 function updateAnsweredCount() {
@@ -34,8 +51,11 @@ function updateAnsweredCount() {
         }
     }
     answeredCount.textContent = answered;
+
+    updateProgressBar();
 }
 
+//Validation for all answered//
 function valdidateAllAnswered() {
     for (let i = 1; i <= TOTAL; i++) 
         if (!document.querySelector(`input[name="q${i}"]:checked`)) {
@@ -51,6 +71,7 @@ function calculateScore() {
     for (let i = 1; i <= TOTAL; i++) {
     const chosen = document.querySelector(`input[name="q${i}"]:checked`);
     if (chosen && chosen.value === answers[`q${i}`]) { 
+        score++;
     }
     }
     return score;
@@ -65,13 +86,13 @@ quizForm.addEventListener("submit", function(event) {
 
     const missing = valdidateAllAnswered();
     if (missing) {
-        message.textContent = `Please answer question ${missing} before submitting.`;
+        showMessage(`Please answer question ${missing} before submitting.`);
         result.textContent = "";
         return;
     }
 
     const score = calculateScore();
-    message.textContent = "Thank you for completing the quiz!";
+    showMessage("Thank you for completing the quiz!");
     result.textContent = `Your score is ${score} out of ${TOTAL}.`;
 });
 
@@ -79,18 +100,12 @@ quizForm.addEventListener("submit", function(event) {
 //Form reset//
 resetBtn.addEventListener("click", function() {
     quizForm.reset();
-    message.textContent = "";
+    showMessage("");
     result.textContent = "";
     updateAnsweredCount();
 }); 
 
-updateAnsweredCount();
+//Initial setup//
+updateAnsweredCount();  
+showMessage("");
 
-//Progress graphic//
-
-const progressBar = document.getElementById("progressBar");
-quizForm.addEventListener("change", function() {
-    const answered = parseInt(answeredCount.textContent);
-    const progressPercent = (answered / TOTAL) * 100;
-    progressBar.style.width = progressPercent + "%";
-}); 

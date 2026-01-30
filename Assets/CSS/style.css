@@ -48,7 +48,7 @@ margin: 6px 0;
 margin: 6px 0 10px;
 color: #92400e;
 font-weight: bold;
-min-height: 1.1rem;
+display: none;
 }   
 
 fieldset {
@@ -115,4 +115,30 @@ margin-top: 14px;}
 .card {
     padding: 12px;
 }
+}
+
+/* Progress Bar  */
+.progressWrap {
+    height: 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 999px;
+    border: #111827 solid 1px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    width: 100% ;
+}
+
+.progressBar {
+    height: 100%;
+    width: 0%;
+    background: #f59e0b;
+    transition: width 0.3s ease-in-out;
+}
+
+.stickyTop {
+    position: sticky;
+    top: 0;
+    background: #fffdf7;
+    padding-top: 12px;
+    border-bottom: 2px solid #fffdf7;;
 }

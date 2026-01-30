@@ -11,17 +11,25 @@
   <link rel="apple-touch-icon" href="Assets/Images/Quiz.jpg">
   <link href="Assets/CSS/style.css" rel="stylesheet">   
 </head> 
+<body>     
 <header>
      <h1>Welcome to the Interactive Quiz</h1>        
     <p>Answer all 10 questions and submit.</p>    
 </header>
-<body>        
+   
    <main class="card">   
     
- <!-----Answered count -->
+   <div class="stickyTop"> 
+    <div class="progressWrap">
+<div id="progressBar" class="progressBar"></div>
 
+
+
+    </div>
+ <!-----Answered count -->
 <p><strong>Answered:</strong> <span id="answeredCount">0</span>/10</p>
-<p id="message" class="message"> </p>
+<p id="message" class="message"></p>
+</div>
 
 <form id="quizForm">
 
@@ -64,7 +72,7 @@
     <label><input type="radio" name="q5" value="A"> Ag</label>
     <label><input type="radio" name="q5" value="B"> Au</label>
     <label><input type="radio" name="q5" value="C"> Pb</label>
-    <label><input type="radio" name="q5" value              ="D"> Fe</label>
+    <label><input type="radio" name="q5" value="D"> Fe</label>
 </fieldset> 
 <!-----Question 6 -->
 <fieldset>
