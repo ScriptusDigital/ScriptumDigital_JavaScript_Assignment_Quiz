@@ -20,7 +20,7 @@
     
  <!-----Answere count -->
 
-<p><strong>Answered:</strong> <span id="answered-count">0</span>/10</p>
+<p><strong>Answered:</strong> <span id="answeredCount">0</span>/10</p>
 <p id="message" class="message"> </p>
 <div id="result" class="result"></div>
 
@@ -28,7 +28,7 @@
 
 
 
-<form>
+<form id="quizForm">
 
 
 
@@ -116,11 +116,10 @@
 <!-----End of Questions -->
 
 
+
+<button type="submit">Submit </button>    
+<button id="resetBtn" type="button">Reset</button>
 </form>
-<button type="submit">Submit Answers</button>   
-<button type="reset">Reset Quiz</button>    
-
-
 
 
 <div class="results-card">
