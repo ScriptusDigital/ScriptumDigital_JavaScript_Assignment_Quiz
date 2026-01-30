@@ -1,10 +1,9 @@
 /* jshint esversion: 6 */
 
-//Action elements//
+//ELEMENTS//
 const quizForm = document.getElementById("quizForm");
 const resetBtn = document.getElementById("resetBtn");
 const message = document.getElementById("message");
-const result = document.getElementById("result");
 const answeredCount = document.getElementById("answeredCount");
 const progressBar = document.getElementById("progressBar");
 const scoreDialog = document.getElementById("scoreDialog");
@@ -13,7 +12,7 @@ const closeDialogBtn = document.getElementById("closeDialogBtn");
 
 const TOTAL = 10;
 
-//Correct Answers//
+//ANSWER KEY//
 const answers = {
     q1: "C",
     q2: "B",
@@ -27,13 +26,13 @@ const answers = {
     q10: "B"
 };
 
-//Show message on bar//
+//MESSAGES//
 function showMessage(text) {
     message.textContent = text;
     message.style.display = text ? "block" : "none";
 }   
 
-//Counter for answers//
+//PROGRESS + COUNT//
 function updateAnsweredCount() {
     let answered = 0;
 
@@ -43,13 +42,12 @@ function updateAnsweredCount() {
         }
     }
     
-    answeredCount.textContent = answered;
-
+answeredCount.textContent = answered;
 const percent = (answered / TOTAL) * 100;
     progressBar.style.width = percent + "%";
 }
 
-//Validation for all answered//
+//VALIDATION//
 function validateAllAnswered() {
     for (let i = 1; i <= TOTAL; i++) {
         if (!document.querySelector(`input[name="q${i}"]:checked`)) {
@@ -59,7 +57,7 @@ function validateAllAnswered() {
     return null;
 }
 
-//Calculating scores//
+//SCORING//
 function calculateScore() {
     let score = 0;
 
@@ -73,25 +71,8 @@ function calculateScore() {
     return score;
 }
 
-//Form Page reset after Score//
-function hardResetQuiz() {
-    quizForm.reset();   
-    quizForm.querySelectorAll("fieldset").forEach(fs => {
-        fs.classList.remove("correct", "incorrect");
-    });
-    quizForm.querySelectorAll("label").forEach(label => {
-        label.classList.remove("correctChoice", "wrongChoice");
-    });
-    answeredCount.textContent = "0";
-    progressBar.style.width = "0%";
-    showMessage("");
-    result.textContent = "";
-    scoreText.textContent = "";
 
-    updateAnsweredCount();
-}
-
-//Show when incorrect or correct//
+//SHOW CORRECT / INCORRECT //
 function showCorrectAnswers() {
     const fieldsets = quizForm.querySelectorAll("fieldset");
 
@@ -106,14 +87,14 @@ fs.querySelectorAll("label").forEach(label => {
     label.classList.remove("correctChoice", "wrongChoice");
 });
 
-//Values for when correct/incorrect//
+//fieldset when correct/incorrect//
     if (chosen && chosen.value === correctValue) {
         fs.classList.add("correct");}
        else {
         fs.classList.add("incorrect");
        }
     
-//Label correct and incorrect answers//
+//Label highlighting//
 fs.querySelectorAll("label").forEach(label => {
     const input = label.querySelector('input[type="radio"]');
     if (!input) return;
@@ -129,57 +110,46 @@ fs.querySelectorAll("label").forEach(label => {
 }
 
 
-//Function for reset quiz//
-function resetQuiz(options = {}) {
-    const {closeDialog = true} = options;
 
-    if (closeDialog && scoreDialog && scoreDialog.open) {
-scoreDialog.close();
-    }
-
-
+//RESET FUNCTIONS FOR OPTIONS, PROGRESS COUNT AND DIALOGUE CLOSE//
+function resetUI() {
     quizForm.reset();
 
- //Clear text//
     showMessage("");
-    result.textContent = "";
+    scoreText.textContent = "";
 
-//clear correct/incrrect backgrounds and labels//
-document.querySelectorAll("fieldset").forEach(fs => {
-    fs.classList.remove("correct", "incorrect");
-});
+    //clear correct/incorrect highlights//
+    quizForm.querySelectorAll("fieldset").forEach(fs => {
+        fs.classList.remove("correct", "incorrect")});
 
-//clear correct/incorrect labels //
-quizForm.querySelectorAll("label").forEach(label => {
-    label.classList.remove("correctChoice", "wrongChoice");
-});
-//reset progress bar and counter //
-answeredCount.textContent = "0";
-progressBar.style.width = "0%";
-answeredCount.textContent = "0";
+        quizForm.querySelectorAll("label").forEach(label => {
+            label.classList.remove("correctChoice", "wrongChoice");
+        });
 
-setTimeout(updateAnsweredCount)
-}
+        //reset progress and count
+        answeredCount.textContent = "0";
+        progressBar.style.width = "0%";
 
+        updateAnsweredCount();  
+    }
 
-//Listener and count//
+//EVENTS//
+//UPDATE AS USERS ANSWER//
 quizForm.addEventListener("change", updateAnsweredCount);
 
-//Submit actions and block reload//
+//SUBMIT>VALIDATE>SCORE>SHOW>HIGHLIGHT ANSWERS//
 quizForm.addEventListener("submit", function(event) {
     event.preventDefault();
 
     const missing = validateAllAnswered();
     if (missing) {
         showMessage(`Please answer question ${missing} before submitting.`);
-        result.textContent = "";
         return;
     }
 
     const score = calculateScore();
     showMessage("Thank you for completing the quiz!");
 
-//Dialogue box with score//
 const scoreMessage = `You scored ${score} out of ${TOTAL}.`;
     scoreText.textContent = scoreMessage;
 
@@ -189,28 +159,19 @@ const scoreMessage = `You scored ${score} out of ${TOTAL}.`;
         alert(scoreMessage);
     }
 
-//show correct/incrrect colours on the form
     showCorrectAnswers();
 });
 
-//Reset button//
-resetBtn.addEventListener("click", function() {
-    quizForm.reset();
-  answeredCount.textContent = "0";
-  progressBar.style.width = "0%";
-  showMessage("");
-  result.textContent = "";
-}); 
+//RESET BUTTON//
+resetBtn.addEventListener("click", resetUI);
+    
 
-//Close button on dialogue box//
+//PLAY AGAIN BUTTON PRESSED TO CLOSE DIALOGUE BOX AND RESET//
 closeDialogBtn.addEventListener("click", function(){
     scoreDialog.close();
 });
 
-//reset if closed by clicking outside//
-scoreDialog.addEventListener("close", function() {
-    hardResetQuiz({closeDialog: false   });
-});
+scoreDialog.addEventListener("close", resetUI);
 
 //Initial count update//
 updateAnsweredCount();  
