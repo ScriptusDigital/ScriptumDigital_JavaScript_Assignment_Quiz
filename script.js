@@ -45,6 +45,16 @@ function valdidateAllAnswered() {
     return null;
 }
 
+//Calculating scores//
+function calculateScore() {
+    let score = 0;
+    for (let i = 1; i <= TOTAL; i++) {
+    const chosen = document.querySelector(`input[name="q${i}"]:checked`);
+    if (chosen && chosen.value === answers[`q${i}`]) { 
+    }
+    }
+    return score;
+}
 
 //Listener and count//
 quizForm.addEventListener("change", updateAnsweredCount);

@@ -100,7 +100,7 @@ button[type="submit"] {
     border: 1px solid #f59e0b;
 }
 
-.results-card {
+.result {
 margin-top: 14px;}
 
 @media (max-width: 520px) {     
