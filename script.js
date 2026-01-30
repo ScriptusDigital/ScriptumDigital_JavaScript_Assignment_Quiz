@@ -9,6 +9,19 @@ const result = document.getElementById("result");
 const answeredCount = document.getElementById("answeredCount");
 const TOTAL = 10;
 
+//Correct Answers//
+const answers = {
+    q1: "C",
+    q2: "B",
+    q3: "B",
+    q4: "D",
+    q5: "B",
+    q6: "C",
+    q7: "C",
+    q8: "A",
+    q9: "C",
+    q10: "B"
+};
 
 //Answered count update//
 
@@ -62,3 +75,6 @@ resetBtn.addEventListener("click", function() {
 }); 
 
 updateAnsweredCount();
+
+
+
