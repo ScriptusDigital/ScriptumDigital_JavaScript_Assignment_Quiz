@@ -152,16 +152,7 @@ button[type="submit"]:hover {
 
 /*  Results   */
 
-.result {
-  margin-top: 16px;
-  padding: 16px;
-    border-radius: 12px;
-    background: #f8fafc;
-    border: #2563eb solid 1px ;
-    font-size: 1.2rem;
-    font-weight: 800;
-   text-align: center;
-}
+
 
 
 
@@ -181,7 +172,28 @@ button[type="submit"]:hover {
 }
 
 
+/*  Pop up for Score   */
+.scoreDialog {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 18px;
+    max-width: 360px; 
+    width: 90%;
+}
 
+.scoreDialog h2 {
+    margin: 0 0 8px;
+   font-size: 1.2rem;
+}
+
+.scoreDialog p {
+ margin: 0 0 12px;
+ font-weight: 800;
+}
+
+.scoreDialog::backdrop {
+    background: #0000008c
+}
 
 /*  Browser options   */
 

@@ -9,6 +9,10 @@ const result = document.getElementById("result");
 const answeredCount = document.getElementById("answeredCount");
 const progressBar = document.getElementById("progressBar");
 const TOTAL = 10;
+const scoreDialog = document.getElementById("scoreDialog");
+const scoreText = document.getElementById("scoreText");
+const closeDialogBtn = document.getElementById("closeDialogBtn");
+
 
 //Correct Answers//
 const answers = {
@@ -34,7 +38,7 @@ function showMessage(text) {
 //Progress bar//
 
 function updateProgressBar() {
-    const answered = parseInt(answeredCount.textContent, 10);
+    const answered = parseInt(answeredCount.textContent, 10) || 0;
     const progressPercent = (answered / TOTAL) * 100;
     progressBar.style.width = progressPercent + "%";
 }
@@ -112,6 +116,37 @@ fs.querySelectorAll("label").forEach(label => {
 }
 }
 
+//Function for reset quiz//
+function resetQuiz() {
+    quizForm.reset();
+    showMessage("");
+    result.textContent = "";
+
+//clear correct/incrrect backgrounds//
+document.querySelectorAll("fieldset").forEach(fs => {
+    fs.classList.remove("correct", "incorrect");
+});
+
+//clear correct/incorrect labels //
+document.querySelectorAll("label").forEach(label => {
+    label.classList.remove("correctChoice", "wrongChoice");
+});
+
+//reset progress bar and counter //
+answeredCount.textContent = "0";
+progressBar.style.width = "0%";
+
+//close dialog if open//
+if (scoreDialog.open) {
+    scoreDialog.close();
+}
+}
+
+//close dialog to reset//
+closeDialogBtn.addEventListener("click", function() {
+    resetQuiz();
+});
+
 
 //Listener and count//
 quizForm.addEventListener("change", updateAnsweredCount);
@@ -129,26 +164,24 @@ quizForm.addEventListener("submit", function(event) {
 
     const score = calculateScore();
     showMessage("Thank you for completing the quiz!");
-    result.textContent = `Your score is ${score} out of ${TOTAL}.`;
-    showCorrectAnswers();
+
+//Dialogue box with score//
+const scoreMessage = `You scored ${score} out of ${TOTAL}.`;
+    scoreText.textContent = scoreMessage;
+
+    if (typeof scoreDialog.showModal === "function") {
+        scoreDialog.showModal();
+    }else {
+        alert(scoreMessage);
+    }
+
+showCorrectAnswers();
+
 });
 
-//Form reset//
+//Reset button//
 resetBtn.addEventListener("click", function() {
-    quizForm.reset();
-    showMessage("");
-    result.textContent = "";
-    updateAnsweredCount();
-
-    document.querySelectorAll("fieldset").forEach(fs => {
-        fs.classList.remove("correct", "incorrect");
-
-document.querySelectorAll("label").forEach(label => {
-            label.classList.remove("correctChoice", "wrongChoice");
-        });
-
-        updateAnsweredCount();
-    });
+    resetQuiz();
 });
 
 //Initial count update//
