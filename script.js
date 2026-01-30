@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 //Action elements//
 const quizForm = document.getElementById("quizForm");
 const resetBtn = document.getElementById("resetBtn");
@@ -8,11 +7,11 @@ const message = document.getElementById("message");
 const result = document.getElementById("result");
 const answeredCount = document.getElementById("answeredCount");
 const progressBar = document.getElementById("progressBar");
-const TOTAL = 10;
 const scoreDialog = document.getElementById("scoreDialog");
 const scoreText = document.getElementById("scoreText");
 const closeDialogBtn = document.getElementById("closeDialogBtn");
 
+const TOTAL = 10;
 
 //Correct Answers//
 const answers = {
@@ -34,49 +33,62 @@ function showMessage(text) {
     message.style.display = text ? "block" : "none";
 }   
 
-
-//Progress bar//
-
-function updateProgressBar() {
-    const answered = parseInt(answeredCount.textContent, 10) || 0;
-    const progressPercent = (answered / TOTAL) * 100;
-    progressBar.style.width = progressPercent + "%";
-}
-
-
-//Answered count update//
-
+//Counter for answers//
 function updateAnsweredCount() {
     let answered = 0;
+
     for (let i = 1; i <= TOTAL; i++) {
         if (document.querySelector(`input[name="q${i}"]:checked`)) {
             answered++;
         }
     }
-
+    
     answeredCount.textContent = answered;
-    updateProgressBar();
+
+const percent = (answered / TOTAL) * 100;
+    progressBar.style.width = percent + "%";
 }
 
 //Validation for all answered//
 function validateAllAnswered() {
-    for (let i = 1; i <= TOTAL; i++) 
+    for (let i = 1; i <= TOTAL; i++) {
         if (!document.querySelector(`input[name="q${i}"]:checked`)) {
             return i;
         }
+    }
     return null;
 }
 
 //Calculating scores//
 function calculateScore() {
     let score = 0;
+
     for (let i = 1; i <= TOTAL; i++) {
     const chosen = document.querySelector(`input[name="q${i}"]:checked`);
     if (chosen && chosen.value === answers[`q${i}`]) { 
         score++;
     }
     }
+
     return score;
+}
+
+//Form Page reset after Score//
+function hardResetQuiz() {
+    quizForm.reset();   
+    quizForm.querySelectorAll("fieldset").forEach(fs => {
+        fs.classList.remove("correct", "incorrect");
+    });
+    quizForm.querySelectorAll("label").forEach(label => {
+        label.classList.remove("correctChoice", "wrongChoice");
+    });
+    answeredCount.textContent = "0";
+    progressBar.style.width = "0%";
+    showMessage("");
+    result.textContent = "";
+    scoreText.textContent = "";
+
+    updateAnsweredCount();
 }
 
 //Show when incorrect or correct//
@@ -116,36 +128,38 @@ fs.querySelectorAll("label").forEach(label => {
 }
 }
 
+
 //Function for reset quiz//
-function resetQuiz() {
+function resetQuiz(options = {}) {
+    const {closeDialog = true} = options;
+
+    if (closeDialog && scoreDialog && scoreDialog.open) {
+scoreDialog.close();
+    }
+
+
     quizForm.reset();
+
+ //Clear text//
     showMessage("");
     result.textContent = "";
 
-//clear correct/incrrect backgrounds//
+//clear correct/incrrect backgrounds and labels//
 document.querySelectorAll("fieldset").forEach(fs => {
     fs.classList.remove("correct", "incorrect");
 });
 
 //clear correct/incorrect labels //
-document.querySelectorAll("label").forEach(label => {
+quizForm.querySelectorAll("label").forEach(label => {
     label.classList.remove("correctChoice", "wrongChoice");
 });
-
 //reset progress bar and counter //
 answeredCount.textContent = "0";
 progressBar.style.width = "0%";
+answeredCount.textContent = "0";
 
-//close dialog if open//
-if (scoreDialog.open) {
-    scoreDialog.close();
+setTimeout(updateAnsweredCount)
 }
-}
-
-//close dialog to reset//
-closeDialogBtn.addEventListener("click", function() {
-    resetQuiz();
-});
 
 
 //Listener and count//
@@ -175,13 +189,27 @@ const scoreMessage = `You scored ${score} out of ${TOTAL}.`;
         alert(scoreMessage);
     }
 
-showCorrectAnswers();
-
+//show correct/incrrect colours on the form
+    showCorrectAnswers();
 });
 
 //Reset button//
 resetBtn.addEventListener("click", function() {
-    resetQuiz();
+    quizForm.reset();
+  answeredCount.textContent = "0";
+  progressBar.style.width = "0%";
+  showMessage("");
+  result.textContent = "";
+}); 
+
+//Close button on dialogue box//
+closeDialogBtn.addEventListener("click", function(){
+    scoreDialog.close();
+});
+
+//reset if closed by clicking outside//
+scoreDialog.addEventListener("close", function() {
+    hardResetQuiz({closeDialog: false   });
 });
 
 //Initial count update//
