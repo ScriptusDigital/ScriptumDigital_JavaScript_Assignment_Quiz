@@ -18,7 +18,7 @@ On **Submit**, JavaScript checks that all questions have been answered. If any a
 ## Design choices
 
 #### Colors
-A clearn, modern colour scheme was chosen to keep the quiz easy to read and reduce visual clutter. The dark page background creates contrast, the light card background improves readability.
+A clean, modern colour scheme was chosen to keep the quiz easy to read and reduce visual clutter. The dark page background creates contrast, the light card background improves readability.
 
 #### Fonts/Typography
 A system font stack is used to ensure fast loading, with no external font requests, consistent readability across devices, and a simple modern appearence suitable for a quiz interface.
@@ -52,9 +52,9 @@ Initial scop included a 10-question quiz, radio-button answers (one selection pe
 
 #### Challenges Faced
 - **Sticky progress UI:** I had orginally considered having each question revealed in sequence as the user clicks through, but on initial testing, this overcomplicated what I had envisioned as a simple-as-possible user experience. To keep as much information viewable to the user as possible, I revised the design so that progress indicators remained visible during scrolling required a sticky status section and testing across screen sizes. 
--**Validation feedback behaviour:** The feedback message needed to be informative without affecting layout when unused as I found that leaving the text area blank until text appears messed with the proportions of the layout's appearance.I resolved this in javascript bu toggling visibility only when validation fails/succeeds. 
--**Keeping selectors and event listeners stable during iterations:** As HTML structor evolved, selectors and event logic needed to be updated to match. Testing and console debugging were used to identify broken references and ensure events fired correctly.
--**Refactoring duplicated logic:** Multiple reset triggers initially had separate implementations, which caused redundancy and console errors. This was resolved by consolodating reset behaviour into a single function used by both the reset button and the dialog close event.
+- **Validation feedback behaviour:** The feedback message needed to be informative without affecting layout when unused as I found that leaving the text area blank until text appears messed with the proportions of the layout's appearance.I resolved this in javascript bu toggling visibility only when validation fails/succeeds. 
+- **Keeping selectors and event listeners stable during iterations:** As HTML structor evolved, selectors and event logic needed to be updated to match. Testing and console debugging were used to identify broken references and ensure events fired correctly.
+- **Refactoring duplicated logic:** Multiple reset triggers initially had separate implementations, which caused redundancy and console errors. This was resolved by consolodating reset behaviour into a single function used by both the reset button and the dialog close event.
 
 #### Interactivity
 JavaScript is used to add interactivity through event listeners and DOM manipulation.`change` events update the answered count and progress bar. The `submit` event validates that all questions are answered and then calculates the score. The score is displayed using a modal dialog. Reset behaviour is handled through a shared reset function. DOM manipulation is used to update text, update the progress bar width, show/hid messages, and apply/remove visual feedback styles. 
