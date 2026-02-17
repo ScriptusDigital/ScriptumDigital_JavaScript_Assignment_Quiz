@@ -147,7 +147,7 @@ quizForm.addEventListener("submit", function(event) {
         showMessage(`Please answer question ${missing} before submitting.`);
         return;
     }
-w
+
     const score = calculateScore();
     showMessage("Thank you for completing the quiz!");
 
