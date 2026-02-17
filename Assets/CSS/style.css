@@ -225,6 +225,8 @@ input[type="radio"]:focus {
     outline-offset: 2px;
 }
 
+
+/*  Resonponsive elements  */
 @media (max-width: 520px) {     
     body {
         padding: 12px;
@@ -238,4 +240,31 @@ input[type="radio"]:focus {
     padding: 12px;
 
 }
+}
+
+@media (max-width: 800px) {     
+    body {
+        padding: 12px;
+    }
+    
+    header h1 {
+        font-size: 1.6rem;
+        padding: 10px 16px;
+    }
+.card {
+    padding: 12px;
+
+}
+}
+
+
+/*  Highlight on answers   */
+
+.correctChoice {
+font-weight: 800;
+}
+
+.wrongChoice {
+    font-weight: 800;
+    text-decoration: line-through;
 }
