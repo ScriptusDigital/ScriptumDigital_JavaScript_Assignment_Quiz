@@ -24,7 +24,7 @@ A clean, modern colour scheme was chosen to keep the quiz easy to read and reduc
 A system font stack is used to ensure fast loading, with no external font requests, consistent readability across devices, and a simple modern appearence suitable for a quiz interface.
 
 #### Images/Graphics
-The progress bar is used as the main graphical element and is updated dynamically with JavaScript to show quiz completion. A favicon (Quiz1.jpg) is used for basic branding and browser tab identification.
+The progress bar is used as the main graphical element and is updated dynamically with JavaScript to show quiz completion. A favicon (Quiz2.jpg) is used for basic branding and browser tab identification.
 
 ## Development Process
 
