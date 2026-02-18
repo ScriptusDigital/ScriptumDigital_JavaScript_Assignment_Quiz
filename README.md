@@ -51,8 +51,9 @@ Initial scop included a 10-question quiz, radio-button answers (one selection pe
 ![Ipad Score](Assets/Wireframes/Javascript_Quiz_Wireframe_Score_Ipad.jpg)
 
 #### Challenges Faced
-- **Sticky progress UI:** I had orginally considered having each question revealed in sequence as the user clicks through, but on initial testing, this overcomplicated what I had envisioned as a simple-as-possible user experience. To keep as much information viewable to the user as possible, I revised the design so that progress indicators remained visible during scrolling required a sticky status section and testing across screen sizes. 
-- **Validation feedback behaviour:** The feedback message needed to be informative without affecting layout when unused as I found that leaving the text area blank until text appears messed with the proportions of the layout's appearance.I resolved this in javascript bu toggling visibility only when validation fails/succeeds. 
+- **Sticky progress UI:** I had orginally considered having each question revealed in sequence as the user clicks through, but on initial testing, this overcomplicated what I had envisioned as a simple-as-possible user experience. To keep as much information viewable to the user as possible, I revised the design so that progress indicators remained visible during scrolling.
+
+- **Validation feedback behaviour:** The feedback message needed to be informative without effecting layout when unused as I found that leaving the text area blank until text appears messed with the proportions of the layout's appearance. I resolved this in javascript by toggling visibility only when validation fails/succeeds. 
 - **Keeping selectors and event listeners stable during iterations:** As HTML structor evolved, selectors and event logic needed to be updated to match. Testing and console debugging were used to identify broken references and ensure events fired correctly.
 - **Refactoring duplicated logic:** Multiple reset triggers initially had separate implementations, which caused redundancy and console errors. This was resolved by consolodating reset behaviour into a single function used by both the reset button and the dialog close event.
 
